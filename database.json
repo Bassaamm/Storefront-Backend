@@ -2,7 +2,6 @@
   "dev": {
     "driver": "pg",
     "host": "localhost",
-    "port": 5432,
     "database": "dev_db",
     "user": "root",
     "password": "root"
@@ -10,9 +9,8 @@
   "test": {
     "driver": "pg",
     "host": "localhost",
-    "port": 5433,
     "database": "test_db",
-    "user": "test_root",
-    "password": "test_root"
+    "user": "root",
+    "password": "root"
   }
 }

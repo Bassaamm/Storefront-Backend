@@ -1,5 +1,5 @@
 export type OrderType = {
-  id?: Number;
-  userId: Number;
+  id?: number;
+  userId: number;
   status: "active" | "complete";
 };

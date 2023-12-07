@@ -1,4 +1,3 @@
-import jwtChecker from "../middlewares/jwt";
 import { Product } from "./../models/product";
 import express from "express";
 
@@ -46,7 +45,7 @@ export const updateProduct = async (
 ) => {
   try {
     const product = req.body;
-    const addProduct = await ProductStore.update(product);
+    await ProductStore.update(product);
   } catch (error) {
     res.status(500).json(`Error while adding the product ${error}`);
   }

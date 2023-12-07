@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 import express from "express";
 import { User } from "../models/user";
 import { UserType } from "../types/user";
-import jwtChecker from "../middlewares/jwt";
 
 dotenv.config();
 
@@ -22,7 +21,7 @@ export const getUserById = async (
   res: express.Response,
 ) => {
   try {
-    const userId: Number = Number(req.params.id);
+    const userId: number = Number(req.params.id);
     const user: UserType = await userStore.show(userId);
     res.status(200).json({ user });
   } catch (error) {

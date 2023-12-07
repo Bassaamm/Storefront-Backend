@@ -44,10 +44,15 @@ These are the notes from a meeting with the frontend developer that describe wha
 #### Orders
 
 - id
+- user_id
+- status of order (active or complete)
+
+#### Orders_Products
+
+- id
 - id of each product in the order
 - quantity of each product in the order
 - user_id
-- status of order (active or complete)
 
 ## Data Shapes
 
@@ -68,8 +73,13 @@ These are the notes from a meeting with the frontend developer that describe wha
   - `category` VARCHAR(100)
 
 - orders
+
+  - `id` SERIAL PRIMARY KEY,
+  - `user_id` INTEGER NOT NULL REFERENCES users(id),
+  - `status` VARCHAR(50) CHECK (status IN ('active', 'complete')) NOT NULL
+
+- orders
   - `id` SERIAL PRIMARY KEY,
   - `product_id` INTEGER NOT NULL REFERENCES products(id),
   - `quantity` INTEGER NOT NULL,
   - `user_id` INTEGER NOT NULL REFERENCES users(id),
-  - `status` VARCHAR(50) CHECK (status IN ('active', 'complete')) NOT NULL

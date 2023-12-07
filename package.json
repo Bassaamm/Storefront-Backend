@@ -5,14 +5,13 @@
   "main": "server.ts",
   "scripts": {
     "start": "nodemon src/server.ts",
-    "build": "npx tsx",
+    "build": "npx tsc",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess \"node ./dist/server.js\"",
     "migrate": "db-migrate --env test up & db-migrate up",
     "jasmine": "jasmine",
-    "test": "cross-env ENV=test npx tsc && db-migrate --env test up && jasmine && db-migrate db:drop test",
+    "test": "set ENV=test && npx tsc && db-migrate --env test up && jasmine && db-migrate db:drop test",
     "prettier": "npx prettier . --write",
-    "lint": "npx eslint src/**",
-    "tsc": "tsc"
+    "lint": "npx eslint src/**"
   },
   "author": "Udacity",
   "license": "ISC",

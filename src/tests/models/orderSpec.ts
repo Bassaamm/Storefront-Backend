@@ -1,8 +1,10 @@
 import { Order } from "../../models/order";
+import postgresClient from "../../database";
 
-const order = new Order();
+describe("Order Model", async () => {
+  const order = new Order();
+  const conn = await postgresClient.connect();
 
-describe("Product Model", () => {
   it("index method", () => {
     expect(order.index).toBeDefined();
   });
@@ -12,4 +14,15 @@ describe("Product Model", () => {
   it(" create method", () => {
     expect(order.create).toBeDefined();
   });
+  it("should get all orders", async () => {
+    const res = await order.index();
+    expect(res).toEqual(jasmine.any(Array));
+  });
+
+  it("should get an order by id", async () => {
+    const res = await order.show(1); // assuming an order with id 1 exists
+    expect(res).toEqual(jasmine.any(Object));
+    expect(res.id).toEqual(1);
+  });
+  afterAll(() => conn.release());
 });

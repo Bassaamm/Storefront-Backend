@@ -1,6 +1,6 @@
 export type CartType = {
-  id?: Number;
-  quantity: Number;
-  productId: Number;
-  orderId: Number;
+  id?: number;
+  quantity: number;
+  productId: number;
+  orderId: number;
 };
